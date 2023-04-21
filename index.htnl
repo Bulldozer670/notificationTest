@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Notification check</title>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+	<style type="text/css">
+		.button
+		{
+		    
+		    padding:10px 10px 10px 10px;
+		    display:inline-block;
+		    background-color: green;
+		  
+		}
+
+		.controls
+		{
+		     margin-top:10px;
+		    padding:10px 10px 10px 10px;
+		     border-style:solid;
+		    border-width:1px;
+		    border-color:black;
+		    display:block;
+		    background-color: #eeeeee;
+		    
+		  
+		}
+	</style>
+</head>
+<body>
+
+<audio id="audiotag1" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" controls preload="auto" loop="true"></audio>
+
+<div class="controls">
+    <div class="button" id="playButton"> Play in 10 sec</div>
+    <div class="button" id="play2Button"> Play in 5 min</div>
+</div> 
+    
+<script type="text/javascript">
+	$(document).ready(function() {
+    $("#playButton").on("click", playButton);
+    $("#play2Button").on("click", play2Button);
+});
+
+
+
+function playButton(e) {
+    document.getElementById('audiotag1').play();
+    document.getElementById('audiotag1').pause();
+    $('body').append('<div class="controls">will start playing  sound in 10 seconds </div>');
+    setTimeout(function(){playSound()},  10000);
+}
+
+function play2Button(e) {
+    document.getElementById('audiotag1').play();
+    document.getElementById('audiotag1').pause();
+    $('body').append('<div class="controls">will start playing  sound in 5 min </div>');
+    setTimeout(function(){playSound()},  300000);
+}
+
+function playSound()
+{
+   console.log("should play")
+   document.getElementById('audiotag1').play();
+   audio = document.getElementById('audiotag1');
+   audio.addEventListener("playing", (event) => {
+  	document.getElement
+   });
+}	
+</script>
+</body>
+</html>
