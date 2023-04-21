@@ -36,12 +36,14 @@
 <div class="controls">
     <div class="button" id="playButton"> Play in 10 sec</div>
     <div class="button" id="play2Button"> Play in 5 min</div>
+    <div class="button" id="play2Button2"> Play in 5 sec #2</div>
 </div> 
     
 <script type="text/javascript">
 	$(document).ready(function() {
     $("#playButton").on("click", playButton);
     $("#play2Button").on("click", play2Button);
+    $("#play2Button2").on("click", play2Button2);
 });
 
 
@@ -60,14 +62,25 @@ function play2Button(e) {
     setTimeout(function(){playSound()},  300000);
 }
 
+function play2Button2(e) {
+    document.getElementById('audiotag1').play();
+    document.getElementById('audiotag1').pause();
+    $('body').append('<div class="controls">will start playing  sound in 5 min #2</div>');
+    if (window.Worker) {
+    	const myWorker = new Worker("worker.js");
+    	myWorker.postMessage("play");
+
+    	myWorker.onmessage = function (e) {
+    		playSound();
+    	}
+    }
+}
+
 function playSound()
 {
    console.log("should play")
    document.getElementById('audiotag1').play();
    audio = document.getElementById('audiotag1');
-   audio.addEventListener("playing", (event) => {
-  	document.getElement
-   });
 }	
 </script>
 </body>
